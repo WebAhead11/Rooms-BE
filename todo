@@ -1,0 +1,17 @@
+Omar:
+
+1. install npm
+2. install express packages
+3. install postgresql and build a database
+4. build essential files and folders needed for 1,2,3
+
+database password (UNIX password) : Roomsbe11
+use "npm run dev" to run
+
+got this error: "SyntaxError: Cannot use import statement outside a module"
+--> how to fix: "type": "module" in package json as the system requires
+-->
+"(node:658) Warning: To load an ES module, set "type": "module" in the package.json or use the .mjs extension."
+now the server works perfectly :)
+
+I am not sure I had the database done well.

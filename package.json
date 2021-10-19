@@ -1,0 +1,31 @@
+{
+  "name": "rooms-be",
+  "version": "1.0.0",
+  "description": "This is Rooms's project back end.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build:db": "node database/build.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebAhead11/Rooms-BE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WebAhead11/Rooms-BE/issues"
+  },
+  "homepage": "https://github.com/WebAhead11/Rooms-BE#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "dotenv": "^10.0.0",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
