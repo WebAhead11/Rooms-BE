@@ -1,5 +1,6 @@
 import express from "express";
 import router from "./router.js";
+import "./database/connection.js"
 
 const app = express();
 
