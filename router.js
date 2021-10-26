@@ -1,9 +1,14 @@
 import express from "express";
 import db from './database/connection.js';
+import cookieParser from "cookie-parser";
+import jwt from "jsonwebtoken";
+const ACCESS_TOKEN_SECRET = "shhhhhh";
+
 const router = express.Router();
+router.use(cookieParser());
 
 router.get("/", (req, res) => {
-  res.send("Testing our server");
+  
 });
 router.get("/rooms", (req, res,next) => {
 
@@ -20,13 +25,18 @@ router.post("/create-room",(req,res)=>{
 })
 router.post("/create-user",(req,res,next)=>{
   let username = req.body.username;
-  console.log(username);
   db.query("INSERT INTO users(username) VALUES($1)", [req.body.username])
   .then(result =>{
+    /** log all users in DB */
     db.query("SELECT * from users")
-    .then(res => console.log(res.rows));
+    .then(response => console.log(response.rows));
+    res.send({username});
   })
   .catch(next);
+
+  
+  
+ 
 
 })
 
