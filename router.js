@@ -15,4 +15,8 @@ router.get("/rooms", (req, res,next) => {
   
 });
 
+router.post("/create-room",(req,res)=>{
+
+})
+
 export default router;
