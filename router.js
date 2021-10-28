@@ -20,8 +20,18 @@ router.get("/rooms", (req, res,next) => {
   
 });
 
-router.post("/create-room",(req,res)=>{
-
+router.post("/create-room",(req,res,next)=>{
+  console.log("in /create-room ")
+  let data = req.body;
+  db.query("INSERT INTO rooms(username,name,description,max_users) VALUES($1,$2,$3,$4)", [req.body.user,req.body.roomName,req.body.description,req.body.people])
+  .then(result =>{
+    /** log all users in DB */
+    db.query("SELECT * from rooms")
+    .then(response => console.log(response.rows));
+    res.send({status:"ok"});
+  })
+  .catch(next);
+  console.log(data);
 })
 router.post("/create-user",(req,res,next)=>{
   let username = req.body.username;
