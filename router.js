@@ -23,7 +23,7 @@ router.get("/rooms", (req, res,next) => {
 router.post("/create-room",(req,res,next)=>{
   console.log("in /create-room ")
   let data = req.body;
-  db.query("INSERT INTO rooms(username,name,description,max_users) VALUES($1,$2,$3,$4)", [req.body.user,req.body.roomName,req.body.description,req.body.people])
+  db.query("INSERT INTO rooms(creator,name,description,max_users) VALUES($1,$2,$3,$4)", [req.body.user,req.body.roomName,req.body.description,req.body.people])
   .then(result =>{
     /** log all users in DB */
     db.query("SELECT * from rooms")
