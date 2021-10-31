@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, rooms CASCADE;
+DROP TABLE IF EXISTS users, rooms, user_room CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -12,7 +12,7 @@ CREATE TABLE rooms (
   id SERIAL PRIMARY KEY,
   name TEXT,
   description TEXT,
-  username TEXT REFERENCES users(username),
+  creator TEXT REFERENCES users(username),
   max_users INTEGER
 );
 
@@ -25,7 +25,7 @@ INSERT INTO users (username) VALUES
   ('kassim'),
   ('omar')
 ;
-INSERT INTO rooms (name,description,username) VALUES
+INSERT INTO rooms (name,description,creator) VALUES
   ('bathroom','a place where you do the dodo','kassim'),
   ('livingroom','a place for the living. you will not find your grandpa there','omar')
 ;
