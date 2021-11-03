@@ -1,4 +1,4 @@
-BEGIN;
+qBEGIN;
 
 DROP TABLE IF EXISTS users, rooms, user_room CASCADE;
 
@@ -29,8 +29,6 @@ INSERT INTO rooms (name,description,creator) VALUES
   ('bathroom','a place where you do the dodo','kassim'),
   ('livingroom','a place for the living. you will not find your grandpa there','omar')
 ;
-
-
 INSERT INTO user_room (username,room_id) VALUES
   ('kassim',1),
   ('omar',2)
