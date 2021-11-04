@@ -31,6 +31,23 @@ router.post("/create-room",(req,res,next)=>{
   .catch(next);
   console.log(data);
 })
+router.post("/delete-room",(req,res,next)=>{
+  let room_id_to_delete = req.body.room_id;
+
+  // first delete users from room
+   db.query(`DELETE FROM user_room WHERE room_id=$1`,[room_id_to_delete])
+  .then(result1 =>{
+    // delete room itself
+    db.query(`DELETE FROM rooms WHERE id=$1`,[room_id_to_delete])
+    .then(result2=>{
+       /** get all room in DB in order to send them back to client */
+    db.query("SELECT * from rooms")
+    .then(response => res.send(response.rows));
+      
+    })
+  })
+  .catch(next);
+})
 router.post("/join-room",(req,res,next)=>{
  const {room_id,user} = req.body;
   db.query(("INSERT INTO user_room(username,room_id) VALUES($1,$2)"), [user,room_id,])
