@@ -22,12 +22,11 @@ router.get("/rooms", (req, res,next) => {
 
 router.post("/create-room",(req,res,next)=>{
   let data = req.body;
-  db.query("INSERT INTO rooms(creator,name,description,max_users) VALUES($1,$2,$3,$4)", [req.body.user,req.body.roomName,req.body.description,req.body.people])
+   db.query("INSERT INTO rooms(creator,name,description,max_users) VALUES($1,$2,$3,$4) RETURNING *", [req.body.user,req.body.roomName,req.body.description,req.body.people])
   .then(result =>{
     /** log all users in DB */
     db.query("SELECT * from rooms")
-    .then(response => console.log(response.rows));
-    res.send({status:"ok"});
+    .then(response => res.send(response.rows));
   })
   .catch(next);
   console.log(data);
